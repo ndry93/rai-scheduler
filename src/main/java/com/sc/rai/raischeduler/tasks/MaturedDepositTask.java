@@ -38,7 +38,8 @@ public class MaturedDepositTask {
             ObjectMapper mapper = new ObjectMapper();
 
             ResponseEntity<Object> response = RESTUtil
-                    .postData( javaHostUrl + "/user/deposits/mature", null, String.class);
+                    .postData( "/user/deposits/mature", null, String.class);
+            log.info("==== "+response.getBody().toString());
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

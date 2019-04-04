@@ -15,6 +15,17 @@ public class RESTUtil {
     private static Logger log = LoggerFactory.getLogger(RESTUtil.class);
 
     @SuppressWarnings("rawtypes")
+    public static ResponseEntity getData(String host, Object object, Class c) {
+
+        ResponseEntity status = restServiceExchange(
+                host,
+                HttpMethod.GET,
+                new HttpEntity<>(object, null),
+                c);
+        return status;
+    }
+
+    @SuppressWarnings("rawtypes")
     public static ResponseEntity postData(String host, Object object, Class c) {
 
         ResponseEntity status = restServiceExchange(
