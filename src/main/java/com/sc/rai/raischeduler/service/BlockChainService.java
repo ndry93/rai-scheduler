@@ -18,51 +18,51 @@ import com.sc.rai.raischeduler.utils.RESTUtil;
 
 @Service
 public class BlockChainService {
-	@Value("${host.blockchain.url}")
-	  protected String blockchainUrlAddress;
-	
-	  @Value("${chain.channel}")
-	  protected String channel;
-	  @Value("${chain.code}")
-	  protected String chainCode;
-	  @Value("${chain.code.version}")
-	  protected String chainCodeVer;
-	
-	  @Value("${chain.create.business.date.method}")
-	  protected String createBusinessDateMethod;
-	  @Value("${chain.get.business.date.method}")
-	  protected String getBusinessDateMethod;
-	  @Value("${chain.update.business.date.method}")
-	  protected String updateBusinessDateMethod;
-	
-	
-	  @Value("${chain.code.username}")
-	  protected String chainUsername;
-	  @Value("${chain.code.password}")
-	  protected String chainPassword;
-	  
-	  public WalletResponse getBusinessDate() throws JsonParseException, JsonMappingException, IOException {
-		    return makeRequest(Collections.EMPTY_LIST, createBusinessDateMethod);
-	  }
-		
-	  public WalletResponse createBusinessDate(LocalDate newBusinessDate) throws JsonParseException, JsonMappingException, IOException {
-	    return makeRequest(List.of(newBusinessDate.toString()), createBusinessDateMethod);
-	  }
-		
-	  public WalletResponse updateBusinessDate(LocalDate newBusinessDate) throws JsonParseException, JsonMappingException, IOException {
-	    return makeRequest(List.of(newBusinessDate.toString()), updateBusinessDateMethod);
-	  }
-		
-	  @SuppressWarnings("unchecked")
-	  private WalletResponse makeRequest(List<String> args, String method) throws JsonParseException, JsonMappingException, IOException {
-			  
-			    WalletRequest request = new WalletRequest(args, channel, chainCode, chainCodeVer, method);
-			    ObjectMapper mapper = new ObjectMapper();
-				
-			    ResponseEntity<Object> response = RESTUtil
-				        .postData(chainUsername, chainPassword, blockchainUrlAddress, request, String.class);
-				    
-			    WalletResponse walletResponse = mapper.readValue(response.getBody().toString(), WalletResponse.class);
-			    return walletResponse;
-	  }
+//	@Value("${host.blockchain.url}")
+//	  protected String blockchainUrlAddress;
+//
+//	  @Value("${chain.channel}")
+//	  protected String channel;
+//	  @Value("${chain.code}")
+//	  protected String chainCode;
+//	  @Value("${chain.code.version}")
+//	  protected String chainCodeVer;
+//
+//	  @Value("${chain.create.business.date.method}")
+//	  protected String createBusinessDateMethod;
+//	  @Value("${chain.get.business.date.method}")
+//	  protected String getBusinessDateMethod;
+//	  @Value("${chain.update.business.date.method}")
+//	  protected String updateBusinessDateMethod;
+//
+//
+//	  @Value("${chain.code.username}")
+//	  protected String chainUsername;
+//	  @Value("${chain.code.password}")
+//	  protected String chainPassword;
+//
+//	  public WalletResponse getBusinessDate() throws JsonParseException, JsonMappingException, IOException {
+//		    return makeRequest(Collections.EMPTY_LIST, createBusinessDateMethod);
+//	  }
+//
+//	  public WalletResponse createBusinessDate(LocalDate newBusinessDate) throws JsonParseException, JsonMappingException, IOException {
+//	    return makeRequest(List.of(newBusinessDate.toString()), createBusinessDateMethod);
+//	  }
+//
+//	  public WalletResponse updateBusinessDate(LocalDate newBusinessDate) throws JsonParseException, JsonMappingException, IOException {
+//	    return makeRequest(List.of(newBusinessDate.toString()), updateBusinessDateMethod);
+//	  }
+//
+//	  @SuppressWarnings("unchecked")
+//	  private WalletResponse makeRequest(List<String> args, String method) throws JsonParseException, JsonMappingException, IOException {
+//
+//			    WalletRequest request = new WalletRequest(args, channel, chainCode, chainCodeVer, method);
+//			    ObjectMapper mapper = new ObjectMapper();
+//
+//			    ResponseEntity<Object> response = RESTUtil
+//				        .postData(chainUsername, chainPassword, blockchainUrlAddress, request, String.class);
+//
+//			    WalletResponse walletResponse = mapper.readValue(response.getBody().toString(), WalletResponse.class);
+//			    return walletResponse;
+//	  }
 }

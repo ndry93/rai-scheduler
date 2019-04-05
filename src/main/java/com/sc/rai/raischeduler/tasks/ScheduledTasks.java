@@ -41,14 +41,14 @@ public class ScheduledTasks {
 	  }
 	}
 	
-	@SuppressWarnings("unused")
-	private void updateBusinessDate() throws JsonParseException, JsonMappingException, IOException {
-	  LocalDate today = LocalDate.now();
-	  log.debug("Updating business date to : {}", today.toString());
-	  blockChainService.updateBusinessDate(today);
-	}
-	public void updateBusinessDateInvoked(LocalDate date) throws JsonParseException, JsonMappingException, IOException {
-		  log.debug("Updating business date to : {}", date.toString());
-		  blockChainService.updateBusinessDate(date);
-		}
+//	@SuppressWarnings("unused")
+//	private void updateBusinessDate() throws JsonParseException, JsonMappingException, IOException {
+//	  LocalDate today = LocalDate.now();
+//	  log.debug("Updating business date to : {}", today.toString());
+//	  blockChainService.updateBusinessDate(today);
+//	}
+//	public void updateBusinessDateInvoked(LocalDate date) throws JsonParseException, JsonMappingException, IOException {
+//		  log.debug("Updating business date to : {}", date.toString());
+//		  blockChainService.updateBusinessDate(date);
+//		}
 }

@@ -5,7 +5,6 @@
  */
 package com.sc.rai.raischeduler.tasks;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -26,16 +25,13 @@ import com.sc.rai.raischeduler.utils.RESTUtil;
 public class MaturedDepositTask {
     private static final Logger log = LoggerFactory.getLogger(MaturedDepositTask.class);
 
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+//    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
     @Value("${host.java.url}")
     protected String javaHostUrl;
 
-    @SuppressWarnings("unchecked")
-//	@Scheduled(fixedRate = 5000)
-    @Scheduled(cron = "0 0 * * * *")
+    @Scheduled(cron = "${tasks.scheduled.hourly}")
     public void updateMaturedActiveDepositStatus() {
-        log.info("The time is now {}", dateFormat.format(new Date()));
         try {
             ObjectMapper mapper = new ObjectMapper();
 
