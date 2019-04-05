@@ -31,14 +31,16 @@ public class MaturedDepositTask {
     @Value("${host.java.url}")
     protected String javaHostUrl;
 
-    @Scheduled(fixedRate = 5000)
+    @SuppressWarnings("unchecked")
+//	@Scheduled(fixedRate = 5000)
+    @Scheduled(cron = "0 0 * * * *")
     public void updateMaturedActiveDepositStatus() {
         log.info("The time is now {}", dateFormat.format(new Date()));
         try {
             ObjectMapper mapper = new ObjectMapper();
 
             ResponseEntity<Object> response = RESTUtil
-                    .postData( "/deposits/mature", null, String.class);
+                    .postData( javaHostUrl+"/user/deposits/mature", null, String.class);
             log.info("==== "+response.getBody().toString());
         } catch (Exception e) {
             // TODO Auto-generated catch block

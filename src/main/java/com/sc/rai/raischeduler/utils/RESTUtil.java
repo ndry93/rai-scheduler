@@ -27,7 +27,7 @@ public class RESTUtil {
 
     @SuppressWarnings("rawtypes")
     public static ResponseEntity postData(String host, Object object, Class c) {
-
+    	log.info(host);
         ResponseEntity status = restServiceExchange(
                 host,
                 HttpMethod.POST,
