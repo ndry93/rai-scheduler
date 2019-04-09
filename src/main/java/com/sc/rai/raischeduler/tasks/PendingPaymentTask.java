@@ -20,8 +20,11 @@ public class PendingPaymentTask {
     @Value("${host.java.url}")
     protected String javaHostUrl;
 
-//    @Scheduled(cron = "${tasks.scheduled.hourly}")
-@Scheduled(fixedRate = 5000)
+    @Value("${tasks.scheduled.hourly}")
+    protected String cronHourly;
+
+    @Scheduled(cron = "${tasks.scheduled.hourly}")
+//@Scheduled(fixedRate = 5000)
     public void creditPendingPaymentsToExternalBankAccounts() {
         try {
             ObjectMapper mapper = new ObjectMapper();
