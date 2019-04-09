@@ -34,7 +34,40 @@ public class ScheduledTasks {
 	public void scheduledDaily() {
 	  try {
 		  ResponseEntity<Object> response = RESTUtil
-                  .postData( javaHostUrl+"/bussinessdate/invoke/update/", null, String.class);
+                  .postData( javaHostUrl+"/bussinessdate/invoke/update", null, String.class);
+		  log.info("==== "+response.getBody().toString());
+	  } catch (Exception e){
+	    log.error("Scheduled task failed: {}", e.getMessage());
+	  }
+	}
+	@SuppressWarnings("unchecked")
+//	@Scheduled(cron = "${tasks.scheduled.hourly}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
+	public void syncEarlyExitRequest() {
+	  try {
+		  ResponseEntity<Object> response = RESTUtil
+                  .postData( javaHostUrl+"/sync/exit/early/request", null, String.class);
+		  log.info("==== "+response.getBody().toString());
+	  } catch (Exception e){
+	    log.error("Scheduled task failed: {}", e.getMessage());
+	  }
+	}
+	@SuppressWarnings("unchecked")
+//	@Scheduled(cron = "${tasks.scheduled.hourly}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
+	public void updateAllActiveEarlyExitRequest() {
+	  try {
+		  ResponseEntity<Object> response = RESTUtil
+                  .postData( javaHostUrl+"/update/active/request/blendedrate", null, String.class);
+		  log.info("==== "+response.getBody().toString());
+	  } catch (Exception e){
+	    log.error("Scheduled task failed: {}", e.getMessage());
+	  }
+	}
+	@SuppressWarnings("unchecked")
+//	@Scheduled(cron = "${tasks.scheduled.hourly}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
+	public void redeemTermDeposit() {
+	  try {
+		  ResponseEntity<Object> response = RESTUtil
+                  .postData( javaHostUrl+"/process/expired/exitEarlyRequest", null, String.class);
 		  log.info("==== "+response.getBody().toString());
 	  } catch (Exception e){
 	    log.error("Scheduled task failed: {}", e.getMessage());
