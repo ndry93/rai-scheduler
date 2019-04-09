@@ -41,7 +41,7 @@ public class ScheduledTasks {
 	  }
 	}
 	@SuppressWarnings("unchecked")
-//	@Scheduled(cron = "${tasks.scheduled.hourly}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
+	@Scheduled(cron = "${tasks.scheduled.minutely}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
 	public void syncEarlyExitRequest() {
 	  try {
 		  ResponseEntity<Object> response = RESTUtil
@@ -52,7 +52,7 @@ public class ScheduledTasks {
 	  }
 	}
 	@SuppressWarnings("unchecked")
-//	@Scheduled(cron = "${tasks.scheduled.hourly}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
+	@Scheduled(cron = "${tasks.scheduled.hourly}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
 	public void updateAllActiveEarlyExitRequest() {
 	  try {
 		  ResponseEntity<Object> response = RESTUtil
@@ -63,7 +63,7 @@ public class ScheduledTasks {
 	  }
 	}
 	@SuppressWarnings("unchecked")
-//	@Scheduled(cron = "${tasks.scheduled.hourly}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
+	@Scheduled(cron = "${tasks.scheduled.hourly}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
 	public void redeemTermDeposit() {
 	  try {
 		  ResponseEntity<Object> response = RESTUtil
