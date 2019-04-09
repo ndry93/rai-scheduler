@@ -35,7 +35,7 @@ public class ScheduledTasks {
 	  try {
 		  ResponseEntity<Object> response = RESTUtil
                   .postData( javaHostUrl+"/bussinessdate/invoke/update", null, String.class);
-		  log.info("==== "+response.getBody().toString());
+		  log.info("====updateBussinessDate : "+response.getBody().toString());
 	  } catch (Exception e){
 	    log.error("Scheduled task failed: {}", e.getMessage());
 	  }
@@ -46,7 +46,7 @@ public class ScheduledTasks {
 	  try {
 		  ResponseEntity<Object> response = RESTUtil
                   .postData( javaHostUrl+"/sync/exit/early/request", null, String.class);
-		  log.info("==== "+response.getBody().toString());
+		  log.info("====syncEarlyExitRequest : "+response.getBody().toString());
 	  } catch (Exception e){
 	    log.error("Scheduled task failed: {}", e.getMessage());
 	  }
@@ -57,7 +57,7 @@ public class ScheduledTasks {
 	  try {
 		  ResponseEntity<Object> response = RESTUtil
                   .postData( javaHostUrl+"/update/active/request/blendedrate", null, String.class);
-		  log.info("==== "+response.getBody().toString());
+		  log.info("====updateAllActiveEarlyExitRequest : "+response.getBody().toString());
 	  } catch (Exception e){
 	    log.error("Scheduled task failed: {}", e.getMessage());
 	  }
@@ -68,7 +68,7 @@ public class ScheduledTasks {
 	  try {
 		  ResponseEntity<Object> response = RESTUtil
                   .postData( javaHostUrl+"/process/expired/exitEarlyRequest", null, String.class);
-		  log.info("==== "+response.getBody().toString());
+		  log.info("====redeemTermDeposit : "+response.getBody().toString());
 	  } catch (Exception e){
 	    log.error("Scheduled task failed: {}", e.getMessage());
 	  }
