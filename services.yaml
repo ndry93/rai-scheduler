@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rai-scheduler-deployment
+  namespace: rai-dev
+spec:
+  selector:
+    matchLabels:
+      app: rai-scheduler
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rai-scheduler
+    spec:
+      containers:
+      - name: rai-scheduler
+    # enter the path to your image, be sure to include the correct region prefix
+        image: iad.ocir.io/scbpoc2/rai/rai-scheduler:latest
+        resources:
+          requests:
+            memory: "1024Mi"
+            cpu: "500m"
+          limits:
+            memory: "4000Mi"
+            cpu: "1000m"
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Always
+#imagePullSecrets:
+    # enter the name of the secret you created  
+#      - name: ocirsecret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rai-scheduler-service
+  namespace: rai-dev
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: rai-scheduler
