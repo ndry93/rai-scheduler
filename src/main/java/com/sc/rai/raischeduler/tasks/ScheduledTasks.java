@@ -30,7 +30,7 @@ public class ScheduledTasks {
 	
 	
 	@SuppressWarnings("unchecked")
-	@Scheduled(cron = "${tasks.scheduled.daily}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
+	@Scheduled(cron = "${tasks.scheduled.bussinessdate}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
 	public void scheduledDaily() {
 	  try {
 		  ResponseEntity<Object> response = RESTUtil
@@ -41,7 +41,7 @@ public class ScheduledTasks {
 	  }
 	}
 	@SuppressWarnings("unchecked")
-	@Scheduled(cron = "${tasks.scheduled.minutely}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
+	@Scheduled(cron = "${tasks.scheduled.sync.early.exit.request}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
 	public void syncEarlyExitRequest() {
 	  try {
 		  ResponseEntity<Object> response = RESTUtil
@@ -52,7 +52,7 @@ public class ScheduledTasks {
 	  }
 	}
 	@SuppressWarnings("unchecked")
-	@Scheduled(cron = "${tasks.scheduled.hourly}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
+	@Scheduled(cron = "${tasks.scheduled.update.all.active.early.exit.request}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
 	public void updateAllActiveEarlyExitRequest() {
 	  try {
 		  ResponseEntity<Object> response = RESTUtil
@@ -63,7 +63,7 @@ public class ScheduledTasks {
 	  }
 	}
 	@SuppressWarnings("unchecked")
-	@Scheduled(cron = "${tasks.scheduled.hourly}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
+	@Scheduled(cron = "${tasks.scheduled.redeem.term.deposit}",zone = "${tasks.scheduled.zone}") /* every day at 12am */
 	public void redeemTermDeposit() {
 	  try {
 		  ResponseEntity<Object> response = RESTUtil
