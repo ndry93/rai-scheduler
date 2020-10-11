@@ -30,7 +30,7 @@ public class MaturedDepositTask {
     @Value("${host.java.url}")
     protected String javaHostUrl;
 
-    @Scheduled(cron = "${tasks.scheduled.update.matured.active.deposit.status}")
+    @Scheduled(cron = "${tasks.scheduled.update.matured.active.deposits}")
     public void updateMaturedActiveDepositStatus() {
         try {
             ObjectMapper mapper = new ObjectMapper();

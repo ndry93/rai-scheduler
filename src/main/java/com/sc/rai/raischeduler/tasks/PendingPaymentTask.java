@@ -23,8 +23,8 @@ public class PendingPaymentTask {
     @Value("${tasks.scheduled.hourly}")
     protected String cronHourly;
 
-    @Scheduled(cron = "${tasks.scheduled.pending.payments}")
-//@Scheduled(fixedRate = 5000)
+//    @Scheduled(cron = "${tasks.scheduled.hourly}")
+    @Scheduled(fixedRate = 30000)
     public void creditPendingPaymentsToExternalBankAccounts() {
         try {
             ObjectMapper mapper = new ObjectMapper();
